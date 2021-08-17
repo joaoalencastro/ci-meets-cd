@@ -17,7 +17,7 @@ jobs:
               --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
               --region=us-east-1
     
-workflow:
+workflows:
   build:
     jobs:
       - create_infrastructure
