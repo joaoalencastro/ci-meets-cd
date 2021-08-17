@@ -36,18 +36,18 @@ Resources:
         Key: !Ref EnvironmentName
     VpcId: !Ref VpcId
 
-    DevelopmentServer:
-      Type: AWS::EC2::Instance
-      Description: "This is the instance that will be used as infrastructure."
-      ImageId: !Ref AmiId
-      KeyName: AWS_EC2_Demo_keypair
-      InstanceType: !Ref InstanceType
-      NetworkInterfaces:
-        - AssociatePublicIpAddress: "true"
-          DeviceIndex: "0"
-          SubnetId: !Ref SubnetId
-          GroupSet: 
-            - !Ref SecurityGroupServer
-      Tags:
-        - Value: Project
-          Key: !Ref EnvironmentName
+  DevelopmentServer:
+    Type: AWS::EC2::Instance
+    Description: "This is the instance that will be used as infrastructure."
+    ImageId: !Ref AmiId
+    KeyName: AWS_EC2_Demo_keypair
+    InstanceType: !Ref InstanceType
+    NetworkInterfaces:
+      - AssociatePublicIpAddress: "true"
+        DeviceIndex: "0"
+        SubnetId: !Ref SubnetId
+        GroupSet: 
+          - !Ref SecurityGroupServer
+    Tags:
+      - Value: Project
+        Key: !Ref EnvironmentName
