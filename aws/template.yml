@@ -23,6 +23,7 @@ Resources:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupName: !Sub ${EnvironmentName}ServerSecGroup
+      GroupDescription: "Security Group for the EC2 infra"
       SecurityGroupEgress: 
         - IpProtocol: tcp
           FromPort: 0
