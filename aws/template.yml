@@ -10,6 +10,13 @@ Parameters:
   AmiId:
     Description: "AMI identification to be used."
     Type: string
+  InstanceType:
+    Description: "Type for the instance"
+    Default: "t2.micro"
+    Type: string
+  SubnetId:
+    Description: "Subnet to be used."
+    Type: string
 Resources:
   SecurityGroupServer:
     Type: AWS::EC2::SecurityGroup
@@ -26,5 +33,21 @@ Resources:
         CidrIp: 0.0.0.0/0
     Tags:
       - Value: Project
-        Key: "udacity"
-    VpcId: !Ref 
+        Key: !Ref EnvironmentName
+    VpcId: !Ref VpcId
+
+    DevelopmentServer:
+      Type: AWS::EC2::Instance
+      Description: "This is the instance that will be used as infrastructure."
+      ImageId: !Ref AmiId
+      KeyName: AWS_EC2_Demo_keypair
+      InstanceType: !Ref InstanceType
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          SubnetId: !Ref SubnetId
+          GroupSet: 
+            - !Ref SecurityGroupServer
+      Tags:
+        - Value: Project
+          Key: !Ref EnvironmentName

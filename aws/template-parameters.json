@@ -10,5 +10,13 @@
   {
     "ParameterValue": "AmiId",
     "ParameterKey": "ami-0c2b8ca1dad447f8a"
+  },
+  {
+    "ParameterValue": "InstanceType",
+    "ParameterKey": "t2.micro"
+  },
+  {
+    "ParameterValue": "SubnetId",
+    "ParameterKey": "subnet-0e6415e9e6a60b9be"
   }
 ]
