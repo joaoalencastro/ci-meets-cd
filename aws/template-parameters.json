@@ -1,22 +1,22 @@
 [
   {
-    "ParameterValue": "EnvironmentName",
-    "ParameterKey": "ci-meets-cd"
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "ci-meets-cd"
   },
   {
-    "ParameterValue": "VpcId",
-    "ParameterKey": "vpc-010e429f7c8d6f05b"
+    "ParameterKey": "VpcId",
+    "ParameterValue": "vpc-010e429f7c8d6f05b"
   },
   {
-    "ParameterValue": "AmiId",
-    "ParameterKey": "ami-0c2b8ca1dad447f8a"
+    "ParameterKey": "AmiId",
+    "ParameterValue": "ami-0c2b8ca1dad447f8a"
   },
   {
-    "ParameterValue": "InstanceType",
-    "ParameterKey": "t2.micro"
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.micro"
   },
   {
-    "ParameterValue": "SubnetId",
-    "ParameterKey": "subnet-0e6415e9e6a60b9be"
+    "ParameterKey": "SubnetId",
+    "ParameterValue": "subnet-0e6415e9e6a60b9be"
   }
 ]
