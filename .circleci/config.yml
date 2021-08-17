@@ -12,8 +12,8 @@ jobs:
           name: create cloudformation stack
           command: |
             aws cloudformation create-stack --stack-name ci-meets-cd \ 
-              --template-body file://../aws/template.yml  \
-              --parameters file://../aws/template-parameters.json \
+              --template-body ../aws/template.yml  \
+              --parameters ../aws/template-parameters.json \
               --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
               --region=us-east-1
     
