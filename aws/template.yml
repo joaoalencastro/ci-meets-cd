@@ -19,9 +19,8 @@ Parameters:
     Type: String
 Resources:
   SecurityGroupServer:
-    Type: AWS::EC2::SecurityGroup
-    GroupDescription: "Security Group for the EC2 instance that receives the IaC jobs from CircleCI"
-    GroupName: !Sub ${EnvironmentName}WebServerSecGroup
+    Type: "AWS::EC2::SecurityGroup"
+    GroupName: !Sub ${EnvironmentName}ServerSecGroup
     SecurityGroupEgress: 
       - IpProtocol: tcp
         FromPort: 0
