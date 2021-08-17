@@ -6,14 +6,14 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/ci-meets-cd
+      # - attach_workspace:
+      #     at: ~/ci-meets-cd
       - run:
           name: create cloudformation stack
           command: |
             aws cloudformation create-stack --stack-name ci-meets-cd \ 
-              --template-body file://~/ci-meets-cd/aws/template.yml  \
-              --parameters file://~/ci-meets-cd/aws/template-parameters.json \
+              --template-body file://../aws/template.yml  \
+              --parameters file://../aws/template-parameters.json \
               --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
               --region=us-east-1
     
