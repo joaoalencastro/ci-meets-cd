@@ -42,7 +42,6 @@ Resources:
   DevelopmentServer:
     Type: AWS::EC2::Instance
     Properties:
-      Description: "This is the instance that will be used as infrastructure."
       ImageId: !Ref AmiId
       KeyName: AWS_EC2_Demo_keypair
       InstanceType: !Ref InstanceType
