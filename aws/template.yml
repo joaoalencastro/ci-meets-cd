@@ -22,7 +22,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Description: "Security Group for the EC2 instance that receives the IaC jobs from CircleCI"
     SecurityGroupEgress:
-      - IpProtocol: tcp
+      - IpProtocol: -1
         FromPort: -1
         ToPort: -1
         CidrIp: 0.0.0.0/0
