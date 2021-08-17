@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Remake of old template for creating an EC2 instance."
+Parameters:
+  EnvironmentName:
+    Description: "A name to the Environment where everything will be fixed to."
+    Type: string
+  VpcId:
+    Description: "VPC identification."
+    Type: string
+  AmiId:
+    Description: "AMI identification to be used."
+    Type: string
+Resources:
+  SecurityGroupServer:
+    Type: AWS::EC2::SecurityGroup
+    Description: "Security Group for the EC2 instance that receives the IaC jobs from CircleCI"
+    SecurityGroupEgress:
+      - IpProtocol: tcp
+        FromPort: -1
+        ToPort: -1
+        CidrIp: 0.0.0.0/0
+    SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+    Tags:
+      - Value: Project
+        Key: "udacity"
+    VpcId: !Ref 

@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterValue": "EnvironmentName",
+    "ParameterKey": "ci-meets-cd"
+  },
+  {
+    "ParameterValue": "VpcId",
+    "ParameterKey": "vpc-010e429f7c8d6f05b"
+  },
+  {
+    "ParameterValue": "AmiId",
+    "ParameterKey": "ami-0c2b8ca1dad447f8a"
+  }
+]
