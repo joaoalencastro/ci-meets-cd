@@ -7,6 +7,7 @@ commands:
           name: Destroy infrastructure
           command: |
             aws cloudformation delete-stack --stack-name $STACK_NAME
+          when: on_fail
 
 jobs:
   create_infrastructure:
@@ -28,8 +29,7 @@ jobs:
           name: Simulate error
           command: |
             return 1
-      - destroy_infrastructure:
-          when: on_fail
+      - destroy_infrastructure
     
 workflows:
   build:
