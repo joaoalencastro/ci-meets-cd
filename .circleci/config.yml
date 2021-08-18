@@ -1,19 +1,39 @@
 version: 2.1
 
+command:
+  destroy_infrastructure:
+    steps:
+      - run:
+          name: Destroy infrastructure
+          command: |
+            aws cloudformation delete-stack --stack-name $STACK_NAME
+
 jobs:
   create_infrastructure:
     docker:
       - image: amazon/aws-cli
     steps:
       - checkout
-      # - attach_workspace:
-      #     at: ~/ci-meets-cd
       - run:
           name: create cloudformation stack
           command: |
-            aws cloudformation create-stack --stack-name ci-meets-cd --template-body file://aws/template.yml --parameters file://aws/template-parameters.json --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1
+            STACK_NAME='ci-meets-cd'
+            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://aws/template.yml --parameters file://aws/template-parameters.json --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1
+  smoke_test:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Simulate error
+          command: |
+            return 1
+      - destroy_infrastructure
+        when: on_fail
     
 workflows:
   build:
     jobs:
       - create_infrastructure
+      - smoke_test:
+          requires: [create_infrastructure]
