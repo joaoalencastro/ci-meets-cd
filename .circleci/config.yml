@@ -6,7 +6,7 @@ commands:
       - run:
           name: Destroy infrastructure
           command: |
-            aws cloudformation delete-stack --stack-name ci-meets-cd
+            aws cloudformation delete-stack --stack-name back-end-${CIRCLE_WORKFLOW_ID}
           when: on_fail
 
 jobs:
@@ -18,15 +18,15 @@ jobs:
       - run:
           name: create cloudformation stack
           command: |
-            aws cloudformation create-stack --stack-name ci-meets-cd --template-body file://aws/template.yml --parameters file://aws/template-parameters.json --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1
+            aws cloudformation create-stack --stack-name back-end-${CIRCLE_WORKFLOW_ID} --template-body file://aws/template.yml --parameters file://aws/template-parameters.json --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1
   smoke_test:
     docker:
       - image: amazon/aws-cli
     steps:
       - checkout
-      - run:
-          name: Simulate error
-          command: return 1
+      # - run:
+      #     name: Simulate error
+      #     command: return 1
       - destroy_infrastructure
     
 workflows:
